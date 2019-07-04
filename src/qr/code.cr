@@ -65,47 +65,53 @@ module QR
       @casesensitive
     end
 
-    def print
-      realwidth = (@qrcode.width + @margin * 2)
-      empty = " "
-      lowhalf = "\342\226\204"
-      uphalf = "\342\226\200"
-      full = "\342\226\210"
-      white = ""
-      reset = ""
+    def to_s
+      String::Builder.build do |builder|
+        realwidth = (@qrcode.width + @margin * 2)
+        empty = " "
+        lowhalf = "\342\226\204"
+        uphalf = "\342\226\200"
+        full = "\342\226\210"
+        white = ""
+        reset = ""
 
-      (@margin / 2).times { realwidth.times { print(full) }; print("\n") }
+        (@margin / 2).times { realwidth.times { builder << full }; builder << "\n" }
 
-      @qrcode.width.times { |y|
-        top = (y % 2) == 0
-        next if !top
-        row1 = @qrcode.data + y * @qrcode.width
-        row2 = row1 + @qrcode.width
-        print(white)
+        @qrcode.width.times { |y|
+          top = (y % 2) == 0
+          next if !top
+          row1 = @qrcode.data + y * @qrcode.width
+          row2 = row1 + @qrcode.width
+          builder << white
 
-        @margin.times { print(full) }
+          @margin.times { builder << full }
 
-        @qrcode.width.times { |x|
-          if (row1[x] & 1 == 0)
-            if (top && (row2[x] & 1 == 0))
-              print(full)
+          @qrcode.width.times { |x|
+            if (row1[x] & 1 == 0)
+              if (top && (row2[x] & 1 == 0))
+                builder << full
+              else
+                builder << uphalf
+              end
+            elsif (top && (row2[x] & 1 == 0))
+              builder << lowhalf
             else
-              print(uphalf)
+              builder << empty
             end
-          elsif (top && (row2[x] & 1 == 0))
-            print(lowhalf)
-          else
-            print(empty)
-          end
+          }
+
+          @margin.times { builder << full }
+
+          builder << reset
+          builder << "\n"
         }
 
-        @margin.times { print(full) }
+        (@margin / 2).times { realwidth.times { builder << full }; builder << "\n" }
+      end
+    end
 
-        print(reset)
-        print("\n")
-      }
-
-      (@margin / 2).times { realwidth.times { print(full) }; print("\n") }
+    def print
+      puts to_s
     end
 
     private def ext_qrcode
