@@ -6,19 +6,17 @@ A library to convert text or data to a QR Code
 
 1. Dependencies
 
-  install qrencode
+   install qrencode
 
-  a. MacOS
+   a. MacOS
+   ```shell
+   brew install qrencode
+   ```
 
-    ```shell
-      brew install qrencode
-    ```
-
-  b. Ubuntu
-
-    ```shell
-      sudo apt install qrencode
-    ```
+   b. Ubuntu
+   ```shell
+   sudo apt install qrencode
+   ```
 
 2. Add the dependency to your `shard.yml`:
 
