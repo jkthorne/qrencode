@@ -36,7 +36,7 @@ qr_code.print
 
 ## Demo
 
-[![asciicast](https://asciinema.org/a/255386.svg)](https://asciinema.org/a/255386)
+[![asciicast](https://asciinema.org/a/255386.png)](https://asciinema.org/a/255386?autoplay=1)
 
 ## Contributors
 
