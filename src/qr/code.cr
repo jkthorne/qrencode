@@ -1,6 +1,6 @@
 module QR
   class Code
-    property content : String,
+    getter content : String,
       version : Int32,
       level : Lib::QREncode::QRecLevel,
       hint : Lib::QREncode::QRencodeMode,
@@ -28,6 +28,41 @@ module QR
 
     def self.print(text)
       new(text).print
+    end
+
+    def content=(new_content) : String
+      @content = new_content.to_s
+      @qrcode = ext_qrcode
+      @content
+    end
+
+    def version=(new_version) : Int32
+      @version = new_version
+      @qrcode = ext_qrcode
+      @version
+    end
+
+    def level=(new_level) : Lib::QREncode::QRecLevel
+      @level = Lib::QREncode::QRecLevel.new(new_level)
+      @qrcode = ext_qrcode
+      @level
+    end
+
+    def hint=(new_hint) : Lib::QREncode::QRencodeMode
+      @hint = Lib::QREncode::QRencodeMode.new(new_hint)
+      @qrcode = ext_qrcode
+      @hint
+    end
+
+    def casesensitive=(new_casesensitive) : Int32
+      if casesensitive.is_a?(Bool)
+        @casesensitive = new_casesensitive.to_unsafe
+      else
+        @casesensitive = new_casesensitive
+      end
+
+      @qrcode = ext_qrcode
+      @casesensitive
     end
 
     def print
@@ -72,10 +107,10 @@ module QR
 
       (@margin / 2).times { realwidth.times { print(full) }; print("\n") }
     end
-  end
 
-  private def ext_qrcode
-    # Lib::QREncode.QRcode_encodeString(@content, @version, @level, @hint, @casesensitive)
-    Lib::QREncode.QRcode_encodeString8bit(@content, @version, @level).value
+    private def ext_qrcode
+      # Lib::QREncode.QRcode_encodeString(@content, @version, @level, @hint, @casesensitive)
+      Lib::QREncode.QRcode_encodeString8bit(@content, @version, @level).value
+    end
   end
 end

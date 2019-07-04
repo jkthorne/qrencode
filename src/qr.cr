@@ -3,7 +3,7 @@ require "./qr/*"
 
 module QR
   def self.encode(text)
-    Code.print(text)
+    Code.new(text)
   end
 
   def self.print(text)
