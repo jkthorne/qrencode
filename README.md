@@ -4,7 +4,23 @@ A library to convert text or data to a QR Code
 
 ## Installation
 
-1. Add the dependency to your `shard.yml`:
+1. Dependencies
+
+  install qrencode
+
+  a. MacOS
+
+    ```shell
+      brew install qrencode
+    ```
+
+  b. Ubuntu
+
+    ```shell
+      sudo apt install qrencode
+    ```
+
+2. Add the dependency to your `shard.yml`:
 
    ```yaml
    dependencies:
@@ -12,7 +28,7 @@ A library to convert text or data to a QR Code
        github: wontruefree/qrencode
    ```
 
-2. Run `shards install`
+3. Run `shards install`
 
 ## Usage
 
