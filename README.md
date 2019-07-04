@@ -34,19 +34,9 @@ qr_code.level = 3
 qr_code.print
 ```
 
-[![asciicast](https://asciinema.org/a/XH1fGZAonWgXcellTCudwqs1Q.svg)](https://asciinema.org/a/XH1fGZAonWgXcellTCudwqs1Q)
+## Demo
 
-## Development
-
-TODO: Write development instructions here
-
-## Contributing
-
-1. Fork it (<https://github.com/wontruefree/qrencode/fork>)
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+[![asciicast](https://asciinema.org/a/XH1fGZAonWgXcellTCudwqs1Q.svg)](https://asciinema.org/a/XH1fGZAonWgXcellTCudwqs1Q?autoplay=1)
 
 ## Contributors
 
